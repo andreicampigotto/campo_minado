@@ -13,12 +13,12 @@ class Tabuleiro {
     required this.colunas,
     required this.qtdeBombas,
   }) {
-    _criarCampo();
+    _criarCampos();
     _relacionarVizinhos();
     _sortearMinas();
   }
 
-  void reinicar() {
+  void reiniciar() {
     for (var c in _campos) {
       c.reiniciar();
     }
@@ -27,13 +27,13 @@ class Tabuleiro {
 
   void revelarBombas() {
     for (var c in _campos) {
-      c.revelarBombas();
+      c.revelarBomba();
     }
   }
 
-  void _criarCampo() {
-    for (var l = 0; l < linhas; l++) {
-      for (var c = 0; c < colunas; c++) {
+  void _criarCampos() {
+    for (int l = 0; l < linhas; l++) {
+      for (int c = 0; c < colunas; c++) {
         _campos.add(Campo(linha: l, coluna: c));
       }
     }
@@ -50,12 +50,13 @@ class Tabuleiro {
   void _sortearMinas() {
     int sorteadas = 0;
 
-    if (qtdeBombas < linhas * colunas) {
+    if (qtdeBombas > linhas * colunas) {
       return;
     }
 
     while (sorteadas < qtdeBombas) {
       int i = Random().nextInt(_campos.length);
+
       if (!_campos[i].minado) {
         sorteadas++;
         _campos[i].minar();

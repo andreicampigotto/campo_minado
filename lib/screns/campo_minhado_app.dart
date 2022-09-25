@@ -20,7 +20,7 @@ class _CampoMinadoAppState extends State<CampoMinadoApp> {
   void _reiniciar() {
     setState(() {
       _venceu = null;
-      _tabuleiro!.reinicar();
+      _tabuleiro!.reiniciar();
     });
   }
 

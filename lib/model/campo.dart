@@ -40,14 +40,12 @@ class Campo {
       throw ExplosaoException();
     }
 
-    if (vizinhacaSegura) {
-      for (var v in vizinhos) {
-        v.abrir();
-      }
+    if (vizinhancaSegura) {
+      vizinhos.forEach((v) => v.abrir());
     }
   }
 
-  void revelarBombas() {
+  void revelarBomba() {
     if (_minado) {
       _aberto = true;
     }
@@ -85,17 +83,16 @@ class Campo {
   }
 
   bool get resolvido {
-    bool minadoMarcado = minado && marcado;
-    bool seguroAberto = !minado && aberto;
-
-    return minadoMarcado || seguroAberto;
+    bool minadoEMarcado = minado && marcado;
+    bool seguroEAberto = !minado && aberto;
+    return minadoEMarcado || seguroEAberto;
   }
 
-  bool get vizinhacaSegura {
-    return vizinhos.every((v) => v._minado);
+  bool get vizinhancaSegura {
+    return vizinhos.every((v) => !v.minado);
   }
 
-  int get qtdeMinhasVizinhanca {
+  int get qtdeMinasNaVizinhanca {
     return vizinhos.where((v) => v.minado).length;
   }
 }
