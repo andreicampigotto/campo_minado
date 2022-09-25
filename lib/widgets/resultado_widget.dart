@@ -32,11 +32,11 @@ class ResultadoWidget extends StatelessWidget implements PreferredSizeWidget {
       color: Colors.grey,
       child: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: CircleAvatar(
             backgroundColor: _getCor(),
             child: IconButton(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               onPressed: onReiniciar,
               icon: Icon(
                 _getIcon(),
@@ -51,5 +51,5 @@ class ResultadoWidget extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(120);
+  Size get preferredSize => const Size.fromHeight(120);
 }
