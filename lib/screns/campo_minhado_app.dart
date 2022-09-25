@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:campo_minado/model/explosao_exception.dart';
 import 'package:campo_minado/model/tabuleiro.dart';
 import 'package:campo_minado/widgets/tabuleiro_widget.dart';
@@ -63,6 +64,10 @@ class _CampoMinadoAppState extends State<CampoMinadoApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return MaterialApp(
       home: Scaffold(
         appBar: ResultadoWidget(
